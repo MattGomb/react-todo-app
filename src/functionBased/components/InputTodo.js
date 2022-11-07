@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import {CiCirclePlus} from 'react-icons/ci'
 
 const InputTodo = props => {
   const [inputText, setInputText] = useState({
@@ -32,7 +33,7 @@ const InputTodo = props => {
         name="title"
         onChange={onChange}
       />
-      <button className="input-submit">Submit</button>
+      <button className="input-submit"><CiCirclePlus style={{ color: "darkcyan", fontSize: "25px", marginLeft: "6px", marginTop: "2px" }} /></button>
     </form>
   )
 }

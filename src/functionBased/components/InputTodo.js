@@ -14,9 +14,10 @@ const InputTodo = (props) => {
   };
 
   const handleSubmit = (e) => {
+    const propsHolder = props;
     e.preventDefault();
     if (inputText.title.trim()) {
-      props.addTodoProps(inputText.title);
+      propsHolder.addTodoProps(inputText.title);
       setInputText({ title: '' });
     } else {
       alert('Please write item');
@@ -33,7 +34,7 @@ const InputTodo = (props) => {
         name="title"
         onChange={onChange}
       />
-      <button className="input-submit">
+      <button type="button" className="input-submit">
         <CiCirclePlus style={{
           color: 'darkcyan', fontSize: '25px', marginLeft: '6px', marginTop: '2px',
         }}

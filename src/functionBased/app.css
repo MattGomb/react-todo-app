@@ -63,3 +63,7 @@ body {
   outline: none;
   border: none;
 }
+
+.input-submit:hover {
+  cursor: pointer;
+}

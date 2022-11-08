@@ -8,7 +8,13 @@ import About from '../pages/About';
 import NotMatch from '../pages/NotMatch';
 import Navbar from './Navbar';
 
-const TodoContainer = (props) => {
+const TodoContainer = () => {
+  function getInitialTodos() {
+    const temp = localStorage.getItem('todos');
+    const savedTodos = JSON.parse(temp);
+    return savedTodos || [];
+  }
+
   const [todos, setTodos] = useState(getInitialTodos());
 
   const handleChange = (id) => {
@@ -42,27 +48,13 @@ const TodoContainer = (props) => {
     setTodos(
       todos.map((todo) => {
         if (todo.id === id) {
+          // eslint-disable-next-line no-param-reassign
           todo.title = updatedTitle;
         }
         return todo;
       }),
     );
   };
-
-  /* useEffect(() => {
-    const temp = localStorage.getItem("todos")
-    const loadedTodos = JSON.parse(temp)
-
-    if (loadedTodos) {
-      setTodos(loadedTodos)
-    }
-  }, []) */
-
-  function getInitialTodos() {
-    const temp = localStorage.getItem('todos');
-    const savedTodos = JSON.parse(temp);
-    return savedTodos || [];
-  }
 
   useEffect(() => {
     const temp = JSON.stringify(todos);

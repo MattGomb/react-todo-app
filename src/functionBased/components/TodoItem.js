@@ -4,6 +4,7 @@ import styles from './TodoItem.module.css';
 
 const TodoItem = (props) => {
   const [editing, setEditing] = useState(false);
+  const propsHolder = props;
 
   const handleEditing = () => {
     setEditing(true);
@@ -22,7 +23,7 @@ const TodoItem = (props) => {
     textDecoration: 'line-through',
   };
 
-  const { completed, id, title } = props.todo;
+  const { completed, id, title } = propsHolder.todo;
 
   const viewMode = {};
   const editMode = {};
@@ -44,9 +45,9 @@ const TodoItem = (props) => {
           type="checkbox"
           className={styles.checkbox}
           checked={completed}
-          onChange={() => props.handleChangeProps(id)}
+          onChange={() => propsHolder.handleChangeProps(id)}
         />
-        <button onClick={() => props.deleteTodoProps(id)}>
+        <button type="button" onClick={() => propsHolder.deleteTodoProps(id)}>
           <CiTrash style={{ color: 'orangered', fontSize: '16px' }} />
         </button>
         <span style={completed ? completedStyle : null}>
@@ -59,7 +60,7 @@ const TodoItem = (props) => {
         className={styles.textInput}
         value={title}
         onChange={(e) => {
-          props.setUpdate(e.target.value, id);
+          propsHolder.setUpdate(e.target.value, id);
         }}
         onKeyDown={handleUpdatedDone}
       />
